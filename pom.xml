@@ -13,6 +13,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -47,10 +48,16 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>JavaVulnerableLab</finalName>
 
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.0</version>
+            </plugin>
 
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -66,10 +73,6 @@
                 </dependencies>
                 <configuration>
                     <plugins>
-                        <!--                        <plugin>-->
-                        <!--                            &lt;!&ndash;                            <groupId>com.mebigfatguy.sb-contrib</groupId>&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                            <artifactId>sb-contrib</artifactId>&ndash;&gt;-->
-                        <!--                            &lt;!&ndash;                            <version>7.4.7</version>&ndash;&gt;-->
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
                             <artifactId>findsecbugs-plugin</artifactId>
@@ -80,4 +83,23 @@
             </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.0.0</version>
+                <configuration>
+                    <debug>true</debug>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.10.1</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
